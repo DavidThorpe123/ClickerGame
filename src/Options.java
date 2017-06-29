@@ -1,3 +1,4 @@
+import java.applet.AudioClip;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -64,6 +65,8 @@ public void mousePressed(MouseEvent e) {
 	int mousey = e.getY();
 	System.out.println("X" + mousex);
 	System.out.println("Y" + mousey);
+	AudioClip effect = JApplet.newAudioClip(getClass().getResource("clicksoundeffect.aiff"));
+	effect.play();
 	if(mousex > 38 && mousex < 167) {
 		if(mousey > 657 && mousey < 730) {
 			try {
