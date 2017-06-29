@@ -1,42 +1,26 @@
-import java.applet.AudioClip;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
 import javax.swing.*;
 
-
-public class StartScreen extends JPanel implements Runnable, MouseListener  {
-JFrame frame;
-
-int frameheight = 1500;
-int framewidth = 1250;
-BufferedImage startscreenimage;
+public class Credits extends JPanel implements Runnable, MouseListener {
+	JFrame frame;
+	int framewidth = 1250;
+	int frameheight = 1500;
+	BufferedImage creditsimage;
+	
 public static void main(String[] args) throws Exception {
-	SwingUtilities.invokeLater((Runnable) new StartScreen());
-	
+	SwingUtilities.invokeLater((Runnable) new Credits());
 }
-StartScreen() throws Exception {
+Credits() throws Exception {
 	frame = new JFrame();
-	
-	startscreenimage = ImageIO.read(getClass().getResource("0003.jpg"));
 	frame.addMouseListener(this);
-	
-	
-	
-	
-	frame.setVisible(true);
-	
+	creditsimage = ImageIO.read(getClass().getResource("0001.jpg"));
 }
-
-
 @Override
 public void run() {
 	// TODO Auto-generated method stub
@@ -49,16 +33,16 @@ public void run() {
 }
 private void showAnotherImage(String imageName) {
 	try {
-		startscreenimage = ImageIO.read(getClass().getResource(imageName));
+		creditsimage = ImageIO.read(getClass().getResource(imageName));
 	} catch (Exception e) {
 		System.err.println("Couldn't find this image: " + imageName);
 	}
 	repaint();
+	
 }
-
 @Override
 public void paintComponent(Graphics g) {
-	g.drawImage(startscreenimage, 0, 0, null);
+	g.drawImage(creditsimage, 0, 0, null);
 }
 @Override
 public void mouseClicked(MouseEvent e) {
@@ -72,35 +56,17 @@ public void mousePressed(MouseEvent e) {
 	int mousey = e.getY();
 	System.out.println("X" + mousex);
 	System.out.println("Y" + mousey);
-	
-	
-	if(mousex > 546 && mousex < 751) {
-		if(mousey > 478 && mousey < 553) {
-		try {
-			Options n = new Options();
-			Options.main(null);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		AudioClip music = JApplet.newAudioClip(getClass().getResource("8bit.aiff"));
-		music.play();
-		}
-		if(mousex > 469 && mousex < 759) {
-			if(mousey > 619 && mousey < 711) {
-				try {
-					Credits c = new Credits();
-					Credits.main(null);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
+	if(mousex > 34 && mousex < 138) {
+		if(mousey > 661 && mousey < 727) {
+			try {
+				StartScreen ss = new StartScreen();
+				StartScreen.main(null);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			
 		}
 	}
-	
 }
 @Override
 public void mouseReleased(MouseEvent e) {
@@ -117,4 +83,6 @@ public void mouseExited(MouseEvent e) {
 	// TODO Auto-generated method stub
 	
 }
+
 }
+
