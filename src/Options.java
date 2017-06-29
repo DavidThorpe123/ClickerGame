@@ -1,44 +1,54 @@
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
-public class Options implements ActionListener {
+public class Options extends JPanel implements Runnable  {
 	JFrame frame;
 	JPanel panel;
-	JButton soundbutton;
-	JButton backbutton;
+	BufferedImage optionimage;
 	boolean hasclickedbutton = false;
-public static void main(String[] args) {
-	Options o = new Options();
+	int framewidth = 1250;
+	int frameheight = 1500;
+public static void main(String[] args) throws Exception {
+	SwingUtilities.invokeLater((Runnable) new Options());
 }
-Options() {
+Options() throws Exception  {
 	frame = new JFrame();
-	panel = new JPanel();
-	soundbutton = new JButton();
-	backbutton = new JButton();
-	Dimension soundbuttondimension = new Dimension(300, 100);
-	Dimension backbuttondimension = new Dimension(300, 100);
-	soundbutton.setPreferredSize(soundbuttondimension);
-	backbutton.setPreferredSize(backbuttondimension);
-	soundbutton.addActionListener(this);
-	soundbutton.setText("Music: On");
-	frame.add(panel);
-	panel.add(soundbutton);
-	panel.add(backbutton);
-	frame.setVisible(true);
-	frame.setSize(500, 750);
+	
+	
+	optionimage = ImageIO.read(getClass().getResource("optionlit.jpg"));
+	
+	
+	
+	
+	
 }
 @Override
-public void actionPerformed(ActionEvent e) {
+public void run() {
 	// TODO Auto-generated method stub
-	if(e.getSource() == soundbutton) {
-		soundbutton.setText("Music: Off");
-		
-	}
-	if(e.getSource() == soundbutton && hasclickedbutton == true) {
-	soundbutton.setText("Music: On");
-	
-	}
+	frame.add(this);
+	setPreferredSize(new Dimension(framewidth, frameheight));
+	frame.pack();
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setResizable(false);
+	frame.setVisible(true);
 }
+private void showAnotherImage(String imageName) {
+	try {
+		optionimage = ImageIO.read(getClass().getResource(imageName));
+	} catch (Exception e) {
+		System.err.println("Couldn't find this image: " + imageName);
+	}
+	repaint();
+	
+}
+@Override
+public void paintComponent(Graphics g) {
+	g.drawImage(optionimage, 0, 0, null);
+}
+
 }

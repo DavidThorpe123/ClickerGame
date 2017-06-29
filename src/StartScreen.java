@@ -21,6 +21,7 @@ int framewidth = 1250;
 BufferedImage startscreenimage;
 public static void main(String[] args) throws Exception {
 	SwingUtilities.invokeLater((Runnable) new StartScreen());
+	
 }
 StartScreen() throws Exception {
 	frame = new JFrame();
@@ -70,10 +71,19 @@ public void mousePressed(MouseEvent e) {
 	int mousex = e.getX();
 	int mousey = e.getY();
 	
-	if(mousex > 496 && mousex < 761) {
-		Options.main(null);
+	
+	if(mousex > 546 && mousex < 751) {
+		if(mousey > 478 && mousey < 553) {
+		try {
+			Options n = new Options();
+			Options.main(null);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		AudioClip music = JApplet.newAudioClip(getClass().getResource("8bit.aiff"));
 		music.play();
+		}
 	}
 	
 }
