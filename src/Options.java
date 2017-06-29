@@ -14,6 +14,7 @@ public class Options extends JPanel implements Runnable, MouseListener  {
 	JPanel panel;
 	BufferedImage optionimage;
 	boolean hasclickedbutton = false;
+	
 	int framewidth = 1250;
 	int frameheight = 1500;
 public static void main(String[] args) throws Exception {
@@ -39,6 +40,7 @@ public void run() {
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setResizable(false);
 	frame.setVisible(true);
+	
 }
 private void showAnotherImage(String imageName) {
 	try {
@@ -65,7 +67,7 @@ public void mousePressed(MouseEvent e) {
 	int mousey = e.getY();
 	System.out.println("X" + mousex);
 	System.out.println("Y" + mousey);
-	AudioClip effect = JApplet.newAudioClip(getClass().getResource("clicksoundeffect.aiff"));
+ AudioClip effect = JApplet.newAudioClip(getClass().getResource("clicksoundeffect.aiff"));
 	effect.play();
 	if(mousex > 38 && mousex < 167) {
 		if(mousey > 657 && mousey < 730) {
@@ -78,6 +80,8 @@ public void mousePressed(MouseEvent e) {
 			}
 		}
 	}
+	
+	
 }
 @Override
 public void mouseReleased(MouseEvent e) {

@@ -1,3 +1,4 @@
+import java.applet.AudioClip;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
@@ -5,6 +6,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
+import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -26,7 +28,7 @@ ClickerGameGame() throws Exception {
 	 frame = new JFrame();
 	 frame.addMouseListener(this);
 	
-	 GameImage = ImageIO.read(getClass().getResource("0001.jpg"));
+	 GameImage = ImageIO.read(getClass().getResource(null));
 }
 private void showAnotherImage(String imageName) {
 	try {
@@ -55,16 +57,18 @@ public void run() {
  	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		int mousex = e.getX();
-		int mousey = e.getY();
-		System.out.println("X" + mousex);
-		System.out.println("Y" + mousey);
+		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int mousex = e.getX();
+		int mousey = e.getY();
+		System.out.println("X" + mousex);
+		System.out.println("Y" + mousey);
+		AudioClip moneysound = JApplet.newAudioClip(getClass().getResource("soundmoney.aiff"));
+		moneysound.play();
 	}
 
 	@Override

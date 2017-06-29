@@ -26,7 +26,7 @@ public static void main(String[] args) throws Exception {
 StartScreen() throws Exception {
 	frame = new JFrame();
 	
-	startscreenimage = ImageIO.read(getClass().getResource(null));
+	startscreenimage = ImageIO.read(getClass().getResource("0003.jpg"));
 	frame.addMouseListener(this);
 	
 	
@@ -46,6 +46,7 @@ public void run() {
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setResizable(false);
 	frame.setVisible(true);
+	
 }
 private void showAnotherImage(String imageName) {
 	try {
@@ -85,6 +86,7 @@ public void mousePressed(MouseEvent e) {
 		}
 		AudioClip music = JApplet.newAudioClip(getClass().getResource("8bit.aiff"));
 		music.play();
+		
 		}
 		if(mousex > 469 && mousex < 759) {
 			if(mousey > 619 && mousey < 711) {
@@ -95,6 +97,8 @@ public void mousePressed(MouseEvent e) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				AudioClip music2 = JApplet.newAudioClip(getClass().getResource("8bit.aiff"));
+				music2.play();
 				
 			}
 			if(mousex > 489 && mousex < 755) {
