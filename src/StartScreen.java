@@ -26,7 +26,7 @@ public static void main(String[] args) throws Exception {
 StartScreen() throws Exception {
 	frame = new JFrame();
 	
-	startscreenimage = ImageIO.read(getClass().getResource("0003.jpg"));
+	startscreenimage = ImageIO.read(getClass().getResource(null));
 	frame.addMouseListener(this);
 	
 	
@@ -94,6 +94,18 @@ public void mousePressed(MouseEvent e) {
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				
+			}
+			if(mousex > 489 && mousex < 755) {
+				if(mousey > 339 && mousey < 449) {
+					try {
+						ClickerGameGame cgg = new ClickerGameGame();
+						ClickerGameGame.main(null);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			}
