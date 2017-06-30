@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -15,20 +16,21 @@ import javax.swing.SwingUtilities;
 import sun.applet.Main;
 
 public class ClickerGameGame extends JPanel implements Runnable, MouseListener {
-	int framewidth = 1250;
-	int frameheight = 1500;
+	int framewidth = 800;
+	int frameheight = 450;
 	JFrame frame;
 	
 	 int money = 0;
 	BufferedImage GameImage;
 public static void main(String[] args) throws Exception {
 	SwingUtilities.invokeLater((Runnable) new ClickerGameGame());
+	
 }
 ClickerGameGame() throws Exception {
 	 frame = new JFrame();
 	 frame.addMouseListener(this);
 	
-	 GameImage = ImageIO.read(getClass().getResource(null));
+	 GameImage = ImageIO.read(getClass().getResource("main.png"));
 }
 private void showAnotherImage(String imageName) {
 	try {
@@ -67,8 +69,21 @@ public void run() {
 		int mousey = e.getY();
 		System.out.println("X" + mousex);
 		System.out.println("Y" + mousey);
-		AudioClip moneysound = JApplet.newAudioClip(getClass().getResource("soundmoney.aiff"));
-		moneysound.play();
+		
+		if(mousex > 288 && mousex < 498) {
+			if(mousey > 133 && mousey < 290) {
+				money+=1;
+				AudioClip moneysound = JApplet.newAudioClip(getClass().getResource("soundmoney.aiff"));
+				moneysound.play();
+				
+			}
+		}
+		
+		if(mousex > 267 && mousex < 512) {
+			if(mousey > 362 && mousey < 471) {
+				Upgrades.main(null);
+			}
+		}
 	}
 
 	@Override
