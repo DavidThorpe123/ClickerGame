@@ -20,15 +20,18 @@ public class ClickerGameGame extends JPanel implements Runnable, MouseListener {
 	int frameheight = 450;
 	JFrame frame;
 	
-	 int money = 0;
+	 static int money = 0;
+	 
+	 String moneystring = Integer.toString(money);
 	BufferedImage GameImage;
 public static void main(String[] args) throws Exception {
 	SwingUtilities.invokeLater((Runnable) new ClickerGameGame());
-	
+	System.out.println(money);
 }
 ClickerGameGame() throws Exception {
 	 frame = new JFrame();
 	 frame.addMouseListener(this);
+	 
 	
 	 GameImage = ImageIO.read(getClass().getResource("main.png"));
 }
