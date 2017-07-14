@@ -12,6 +12,7 @@ public class Upgrades implements ActionListener {
 	JButton upgrade2;
 	JButton back;
 	boolean hasgottenfirstupgrade = false;
+	boolean hasgotten1firstupgrade = false;
 	int money = 0;
 public static void main(String[] args) {
 	Upgrades u = new Upgrades();
@@ -43,6 +44,7 @@ Upgrades()  {
 	upgrade2.setPreferredSize(buttondimension);
 	upgrade2.setText("Upgrade AutoClickers: 0");
 	upgrade2.setFont(new Font("Arial", Font.BOLD, 50));
+	upgrade2.addActionListener(this);
 
 	panel.setBackground(r);
 	
@@ -63,11 +65,20 @@ public void actionPerformed(ActionEvent e) {
 			
 		}
 	}
-	if(e.getSource() == upgrade1 && money > 1) {
+	if(e.getSource() == upgrade1 && money > 10) {
+		money-= 10;
 		upgrade1.setText("Upgrade Money Per Second: 1");
 		hasgottenfirstupgrade = true;
 	}
 	else if(e.getSource() == upgrade1 && money < 100) {
+		JOptionPane.showMessageDialog(null, "You need more money!");
+	}
+	if(e.getSource() == upgrade2 && money > 50) {
+		money -= 50;
+		upgrade2.setText("Upgrade Autoclickers: 1");
+		hasgotten1firstupgrade = true;
+	}
+	else if(e.getSource() == upgrade2 && money < 50) {
 		JOptionPane.showMessageDialog(null, "You need more money!");
 	}
 	
