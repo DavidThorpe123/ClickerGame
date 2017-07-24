@@ -11,11 +11,11 @@ public class Upgrades implements ActionListener {
 	JButton upgrade1;
 	JButton upgrade2;
 	JButton back;
-	boolean hasgottenfirstupgrade = false;
-	boolean hasgotten1firstupgrade = false;
-	int money = 0;
-public static void main(String[] args) {
+
+public static void main(String[] args)  {
 	Upgrades u = new Upgrades();
+	
+	
 }
 Upgrades()  {
 	frame = new JFrame();
@@ -34,7 +34,7 @@ Upgrades()  {
 	
 	Dimension buttondimension = new Dimension(1000, 100);
 	upgrade1.setPreferredSize(buttondimension);
-	upgrade1.setText("Upgrade Money Per Second: 0");
+	upgrade1.setText("Upgrade Money Per Second");
 	upgrade1.setFont(new Font("Arial", Font.BOLD, 50 ));
 	upgrade1.addActionListener(this);
 	back.setPreferredSize(buttondimension);
@@ -42,7 +42,7 @@ Upgrades()  {
 	back.setFont(new Font("Arial", Font.BOLD, 50));
 	back.addActionListener(this);
 	upgrade2.setPreferredSize(buttondimension);
-	upgrade2.setText("Upgrade AutoClickers: 0");
+	upgrade2.setText("Upgrade AutoClickers");
 	upgrade2.setFont(new Font("Arial", Font.BOLD, 50));
 	upgrade2.addActionListener(this);
 
@@ -53,8 +53,10 @@ Upgrades()  {
 }
 @Override
 public void actionPerformed(ActionEvent e) {
+	int money = ClickerGameGame.money;
 	// TODO Auto-generated method stub
 	if(e.getSource() == back) {
+	
 		try {
 			ClickerGameGame gg = new ClickerGameGame();
 			ClickerGameGame.main(null);
@@ -67,16 +69,17 @@ public void actionPerformed(ActionEvent e) {
 	}
 	if(e.getSource() == upgrade1 && money > 10) {
 		money-= 10;
-		upgrade1.setText("Upgrade Money Per Second: 1");
-		hasgottenfirstupgrade = true;
+		JOptionPane.showMessageDialog(null, "You just upgraded your Money per Second!");
+		
 	}
 	else if(e.getSource() == upgrade1 && money < 100) {
 		JOptionPane.showMessageDialog(null, "You need more money!");
 	}
 	if(e.getSource() == upgrade2 && money > 50) {
 		money -= 50;
-		upgrade2.setText("Upgrade Autoclickers: 1");
-		hasgotten1firstupgrade = true;
+		JOptionPane.showMessageDialog(null, "You just upgraded your Autoclickers");
+		
+		
 	}
 	else if(e.getSource() == upgrade2 && money < 50) {
 		JOptionPane.showMessageDialog(null, "You need more money!");
@@ -84,4 +87,5 @@ public void actionPerformed(ActionEvent e) {
 	
 			
 }
+
 }

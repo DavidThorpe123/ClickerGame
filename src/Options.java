@@ -71,6 +71,7 @@ public void mousePressed(MouseEvent e) {
 	effect.play();
 	if(mousex > 38 && mousex < 167) {
 		if(mousey > 657 && mousey < 730) {
+			frame.dispose();
 			try {
 				StartScreen ss = new StartScreen();
 				StartScreen.main(null);

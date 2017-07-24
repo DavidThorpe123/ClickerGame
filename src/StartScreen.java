@@ -20,6 +20,7 @@ int frameheight = 1500;
 int framewidth = 1250;
 BufferedImage startscreenimage;
 public static void main(String[] args) throws Exception {
+	JOptionPane.showMessageDialog(null, "Before you start the back button does not work on the Upgrades Screen also the Shop button on the main game does not work.  So please just keep both windows open. Enjoy!");
 	SwingUtilities.invokeLater((Runnable) new StartScreen());
 	
 }
@@ -77,6 +78,7 @@ public void mousePressed(MouseEvent e) {
 	effect.play();
 	if(mousex > 546 && mousex < 751) {
 		if(mousey > 478 && mousey < 553) {
+			frame.dispose();
 		try {
 			Options n = new Options();
 			Options.main(null);
@@ -91,6 +93,7 @@ public void mousePressed(MouseEvent e) {
 		}
 		if(mousex > 469 && mousex < 759) {
 			if(mousey > 619 && mousey < 711) {
+				frame.dispose();
 				try {
 					Credits c = new Credits();
 					Credits.main(null);
@@ -104,6 +107,7 @@ public void mousePressed(MouseEvent e) {
 			}
 			if(mousex > 489 && mousex < 755) {
 				if(mousey > 339 && mousey < 449) {
+					frame.dispose();
 					try {
 						ClickerGameGame cgg = new ClickerGameGame();
 						ClickerGameGame.main(null);

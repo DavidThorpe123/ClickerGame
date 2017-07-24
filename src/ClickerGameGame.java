@@ -20,13 +20,13 @@ public class ClickerGameGame extends JPanel implements Runnable, MouseListener {
 	int frameheight = 450;
 	JFrame frame;
 	
-	 static int money = 0;
+	 public static int money = 0;
 	 
 	 String moneystring = Integer.toString(money);
 	BufferedImage GameImage;
 public static void main(String[] args) throws Exception {
 	SwingUtilities.invokeLater((Runnable) new ClickerGameGame());
-	System.out.println(money);
+	
 }
 ClickerGameGame() throws Exception {
 	 frame = new JFrame();
@@ -75,7 +75,9 @@ public void run() {
 		
 		if(mousex > 288 && mousex < 498) {
 			if(mousey > 133 && mousey < 290) {
+				
 				money+=1;
+				System.out.println(money);
 				AudioClip moneysound = JApplet.newAudioClip(getClass().getResource("soundmoney.aiff"));
 				moneysound.play();
 				
@@ -84,6 +86,7 @@ public void run() {
 		
 		if(mousex > 267 && mousex < 512) {
 			if(mousey > 362 && mousey < 471) {
+				frame.dispose();
 				Upgrades.main(null);
 			}
 		}
@@ -107,6 +110,6 @@ public void run() {
 		
 	}
 
-	
+
 
 }
